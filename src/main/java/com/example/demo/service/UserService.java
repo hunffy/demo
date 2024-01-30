@@ -32,5 +32,9 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userMapper.saveUser(user);
     }
+
+    public User loginUser(User loginUser){
+        return userMapper.loginUser(loginUser);
+    }
 }
 
