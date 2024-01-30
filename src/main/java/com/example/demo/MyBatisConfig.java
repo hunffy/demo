@@ -1,48 +1,38 @@
 package com.example.demo;
+
+import lombok.RequiredArgsConstructor;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.mapper.MapperScannerConfigurer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-
-import org.springframework.context.annotation.Configuration;
-
-import lombok.RequiredArgsConstructor;
-
 @Configuration
-@MapperScan(basePackages = "com.example.demo.mapper")
+@MapperScan(basePackages = "com.example.demo.mapper")   // mapper 인터페이스의 경로와 동일해야 한다.
 @RequiredArgsConstructor
 public class MyBatisConfig {
+
     private final ApplicationContext applicationContext;
 
-
     @Bean
-    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+    public SqlSessionFactory sqlSessionFactory (DataSource dataSource) throws Exception {
+        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 
-        factoryBean.setDataSource(dataSource);
-        factoryBean.setTypeAliasesPackage("com.example.demo.mapper");
-        factoryBean.setMapperLocations(
+        sqlSessionFactoryBean.setDataSource(dataSource);
+        sqlSessionFactoryBean.setTypeAliasesPackage("com.example.demo.model");
+        sqlSessionFactoryBean.setMapperLocations(
                 applicationContext.getResources("classpath:/mapper/*.xml"
                 ));
-        return factoryBean.getObject();
+	
+        return sqlSessionFactoryBean.getObject();
     }
 
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
-    MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-    mapperScannerConfigurer.setBasePackage("com.example.demo.mapper");
-    return mapperScannerConfigurer;
-}
- @Bean
     public SqlSessionTemplate sqlSession (SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
-    
 }
