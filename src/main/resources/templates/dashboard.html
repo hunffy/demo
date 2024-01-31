@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <title>dashboard</title>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h2>환영합니다, {{username}} 님!</h2>
+      <p>현재 구독중인 서비스 : {{subscription_type}}</p>
+      <p>남은 기간 : {{remaining_days}}일</p>
+      <p>스토리지 사용량 : {{storage_usage}}TB</p>
+
+      <h2>서비스 기간연장</h2>
+      <form action="/subscribe" method="post">
+        <div class="form-group">
+          <label for="storage">서비스 기간</label>
+          <input
+            type="number"
+            id="remaining_days"
+            name="remaining_days"
+            class="form-control"
+            min="1"
+            max="100"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">연장하기</button>
+      </form>
+    </div>
+  </body>
+</html>

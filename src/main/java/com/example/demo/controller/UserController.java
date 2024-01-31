@@ -31,11 +31,14 @@ public class UserController{
         String email = user.getEmail();
         String company_name = user.getCompany_name();
         String address = user.getAddress();
+        String phone = user.getPhone();
 
         model.addAttribute("user_name",user_name);
         model.addAttribute("email",email);
         model.addAttribute("company_name",company_name);
         model.addAttribute("address",address);
+        model.addAttribute("phone",phone);
+
         return "mypage";
     }
     
