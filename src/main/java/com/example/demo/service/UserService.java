@@ -26,6 +26,8 @@ public class UserService {
     UserMapper userMapper;
 
     @Transactional
+    
+    //회원가입
     public boolean joinUser(User user){
 
         if (user.getUser_id() == null || user.getUser_id().isEmpty() ||
@@ -66,6 +68,7 @@ public class UserService {
         return true;
     }
 
+    //로그인
     public User loginUser(User loginUser){
         return userMapper.loginUser(loginUser);
     }

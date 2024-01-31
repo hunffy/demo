@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.UserService;
+
+import jakarta.servlet.http.HttpSession;
+
 import com.example.demo.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +24,9 @@ public class UserController{
     @Autowired
     UserService userService;
 
-    @GetMapping("/")
-    public String HomePage() {
-        return "home";
+    @GetMapping("/mypage")
+    public String MyPage(){
+        return "mypage";
     }
     
 
@@ -55,12 +58,13 @@ public class UserController{
     }
 
    @PostMapping("/login")
-    public String login(@ModelAttribute User loginUser, Model model){
-        System.out.println(loginUser);
+    public String login(@ModelAttribute User loginUser, Model model , HttpSession session){
+
         User user = userService.loginUser(loginUser);
         if(user != null){
             model.addAttribute("message","로그인성공");
             model.addAttribute("user_id",user.getUser_id());
+            session.setAttribute("user", user);
             return "home";
         }else{
             model.addAttribute("message","로그인실패");
