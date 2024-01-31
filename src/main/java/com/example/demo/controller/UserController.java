@@ -25,7 +25,17 @@ public class UserController{
     UserService userService;
 
     @GetMapping("/mypage")
-    public String MyPage(){
+    public String MyPage(Model model, HttpSession session){
+        User user = (User) session.getAttribute("user");
+        String user_name = user.getUser_name();
+        String email = user.getEmail();
+        String company_name = user.getCompany_name();
+        String address = user.getAddress();
+
+        model.addAttribute("user_name",user_name);
+        model.addAttribute("email",email);
+        model.addAttribute("company_name",company_name);
+        model.addAttribute("address",address);
         return "mypage";
     }
     
