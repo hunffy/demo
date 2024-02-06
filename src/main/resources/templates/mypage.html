@@ -22,26 +22,6 @@
       <div>
         <h3>구독 신청</h3>
         <form th:action="@{/subscribe}" method="post">
-          <div class="-group">
-            <label for="email">이메일</label>
-            <input
-              type="text"
-              class="form-control"
-              id="email"
-              name="email"
-              required
-            />
-          </div>
-          <div class="-group">
-            <label for="phone">핸드폰 번호</label>
-            <input
-              type="text"
-              class="form-control"
-              id="phone"
-              name="phone"
-              required
-            />
-          </div>
           <div class="form-group">
             <label for="userCount">사용 인원</label>
             <input
@@ -60,9 +40,10 @@
               name="serviceType"
               required
             >
-              <option value="Basic">Basic</option>
-              <option value="Standard">Standard</option>
-              <option value="Premium">Premium</option>
+              <option value="1">basic</option>
+
+              <option value="2">standard</option>
+              <option value="3">premium</option>
             </select>
           </div>
           <div class="form-group">
@@ -75,15 +56,19 @@
               required
             />
           </div>
-          <div class="-group">
+          <div class="form-group">
             <label for="subscriptionPeriod">구독 기간</label>
-            <input
-              type="number"
+            <select
               class="form-control"
               id="subscriptionPeriod"
               name="subscriptionPeriod"
               required
-            />
+            >
+              <option value="1">1개월</option>
+              <option value="3">3개월</option>
+              <option value="6">6개월</option>
+              <option value="12">1년</option>
+            </select>
           </div>
           <button type="submit" class="btn btn-primary">구독하기</button>
         </form>
