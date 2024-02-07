@@ -27,7 +27,7 @@ public class SubscriptionService {
 
   // 구독 검사
   public String checkSubscription(User user){
-    Subscribe subscribe = subscriptionRepository.findByuser_U_Id(user.getU_id()).orElse(null);
+    Subscribe subscribe = subscriptionRepository.findByUserUid(user.getUid()).orElse(null);
     if(subscribe != null){
       LocalDateTime now = LocalDateTime.now();
       if(subscribe.getSubscription_end_date().isAfter(now)) {

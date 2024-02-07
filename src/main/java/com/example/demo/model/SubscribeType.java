@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class SubscribeType {
     @Id
-    private int subscription_type_id;
+    private int subscriptionTypeId;
     private String type_name;
     private int price;
     private String description;    

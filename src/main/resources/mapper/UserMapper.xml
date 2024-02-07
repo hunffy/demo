@@ -8,7 +8,7 @@
     <select id="loginUser" parameterType="com.example.demo.model.User">
         SELECT * FROM USER WHERE user_id = #{user_id} AND password = #{password}
     </select>
-    <select id="getUserById" parameterType="com.example.demo.model.User">
-        SELECT * FROM USER WHERE user_id = #{user_id}
+    <select id="getUserById" resultType="com.example.demo.model.User">
+        SELECT * FROM USER WHERE user_id = #{id}
     </select>
 </mapper>

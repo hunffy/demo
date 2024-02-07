@@ -17,10 +17,10 @@ public class Subscribe {
     private LocalDateTime subscription_end_date;
 
     @ManyToOne
-    @JoinColumn(name = "u_id", insertable = false, updatable = false)
+    @JoinColumn(name = "uid", insertable = false, updatable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "subscription_type_id", insertable = false, updatable = false)
+    @JoinColumn(name = "subscriptionTypeId", insertable = false, updatable = false)
     private SubscribeType subscribeType;
 }

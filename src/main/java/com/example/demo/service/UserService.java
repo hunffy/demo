@@ -69,8 +69,9 @@ public class UserService {
     }
 
     //로그인
-    public User loginUser(User loginUser){
-        return userMapper.loginUser(loginUser);
+    public User getUserById(String id){
+        return userMapper.getUserById(id);
     }
+
 }
 

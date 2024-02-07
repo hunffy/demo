@@ -11,7 +11,7 @@ import lombok.Data;
 //@Getter, @Setter, @RequiredArgsConstructor, @ToString, @EqualsAndHashCode 어노테이션을 한꺼번에 설정해주는 어노테이션
 public class User {
     @Id
-    private Integer u_id;
+    private Integer uid;
     private String user_id;
     private String user_name;
     private String password;
